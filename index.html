@@ -68,10 +68,12 @@
 
 
 
+	  // essentially hiding the entire thing.
       function hideScreens() {
         $(".content").hide();
       }
 
+	  // when we click on somehting in the navbar, it reads the thing and then loads the html file 
       $(".nav-link").on("click", function(){
         hideScreens();
         var target = $(this).attr("href");
