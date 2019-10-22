@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+</head>
+
+<body>
+	<input type="text" id="park" placeholder="Enter a Park name">
+    <br>
+    <input type="text" id="movie" placeholder="Enter a movie title">
+    <br>
+    <input type="text" id="day" placeholder="Enter a day of the week">
+    <br>
+    <input type="checkbox" name="onlyUpcoming" value="upcoming" checked> upcoming Movies only<br>
+   <button id="btnSave">Save</button>
+   <hr>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"></script>
+
+    <script>
+
+        //  global variables to be used around files
+        window.park_name = "";
+        window.movie_name ="";
+        window.day_of_week = "";
+        window.up_coming ="";
+
+        // when we click the save button do these type of things
+        // save the information from the box
+      $("#btnSave").on("click", function(){
+        park_name = $("#park").val(); // grab the park name
+        movie_name = $("#movie").val(); // grab the movie name
+        day_of_week = $("#day").val(); // grab day
+        up_coming = $("input[name='onlyUpcoming']:checked").val();
+
+        // testing if it works
+        // $("body").append(park_name  + movie_name + day_of_week + "<br>");
+      });
+
+
+    </script>
+
+
+  </body>
+</html>

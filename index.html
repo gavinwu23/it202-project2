@@ -31,7 +31,7 @@
         <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#screen2">Screen 2</a>
+        <a class="nav-link" href="#search">Search</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#screen3">Screen 3</a>
@@ -47,8 +47,8 @@
   <div class="content" id="home">
 
   </div>
-  <div class="content" id="screen2">
-    This is screen 2
+  <div class="content" id="search">
+    
   </div>
   <div class="content" id="screen3">
     This is screen 3
@@ -71,7 +71,12 @@
 		// window.globalVar = "hello";
 		// $("body").append(globalVar + "<br>");
 
-	  // essentially hiding the entire thing.
+		// we want to load the home page right away from the get go.
+		var home1 = "#home";
+		$(home1).show();
+		$(home1).load("page_content/" + home1.replace("#","") + ".html");
+
+	  // essentially hiding the entire thing. of each content, which is the class content
       function hideScreens() {
         $(".content").hide();
       }
