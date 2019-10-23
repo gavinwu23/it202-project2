@@ -13,7 +13,7 @@
    <br>
 
    <div class ="eMSG">
-	   <p>No data found. Please go to search tab and enter some info.</p>
+	   <h4>No data found. Please go to search tab and enter some info.</h4>
    </div>
 
 
@@ -35,6 +35,9 @@
 			// hide the error message
 			$(".eMSG").hide();
 
+			// delete all pargraph elements
+			$(".movieThings").remove();
+
 			// if all 3 of the input is empty then display msg
 			if (is_empty_string(park_name) && is_empty_string(movie_name) && is_empty_string(day_of_week)){
 				$(".eMSG").show(); // show the error message
@@ -55,12 +58,33 @@
 
 			// if we have a specific day
 
-			// call get..right now its going blasting thr getting undefined
+			// call get. once we click the button
 			if (clickedd === true) {
 			$.get(query,
 			function(response) {
 				$.each(response,function(i,v) {
-					$("body").append(v.title + "<br>");
+					// add pargraph elements to the thing
+					var p = $("<p>");
+					p.addClass("movieThings");
+					//p.html(v.title + "<br>hello");
+
+					// park info, name,phone, address
+					var parkName1 = v.park;
+					var parkPhone = v.park_phone;
+					var parkAdd = v.park_address;
+
+					var movieTitle = v.title;
+					var movieDate = v.date;
+					var movieRating= v.rating;
+					var captionsl =v. cc;
+
+					 p.html(movieTitle + " " + movieRating + "<br>" + parkName1 + " " + movieDate + "<br>" + parkPhone + "<br>" + parkAdd + "<br>"
+				  + "Closed Caption: " + captionsl + "<br>");
+
+
+
+					// $("body").append(v.title + "<br>");
+					$("body").append(p);
 				});
 			});
 		}
@@ -68,7 +92,7 @@
 		// set clicked back to false
 		clickedd = false;
 
-});
+}); // document ready
     </script>
 
 

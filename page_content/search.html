@@ -32,6 +32,9 @@
 
         $(document).ready(function() {
 
+			// delete all pargraph elements
+			$(".movieThings").remove();
+
         // when we click the save button do these type of things
         // save the information from the box
       $("#btnSave").on("click", function(){
@@ -41,7 +44,7 @@
         up_coming = $("input[name='onlyUpcoming']:checked").val();
         clickedd = true;
 
-        // check if upcoming works 
+        // check if upcoming works
 
         // right here now show the table screen
 
