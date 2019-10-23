@@ -45,13 +45,15 @@
 			// hold all the total query to use to the get method ajax
             var query = endpoint + "?";
 
-			//if we have a parkname entered concat it
+			//if we have a moviename entered concat it
 			if (is_empty_string(movie_name) === false) {
 				query = query + "Title=";
 				query = query + movie_name;
 			}
 
+			// if we have a park name
 
+			// if we have a specific day
 
 			// call get..right now its going blasting thr getting undefined
 			if (clickedd === true) {
@@ -61,16 +63,10 @@
 					$("body").append(v.title + "<br>");
 				});
 			});
-
 		}
 
-
-
-
-
-
-
-
+		// set clicked back to false
+		clickedd = false;
 
 });
     </script>
