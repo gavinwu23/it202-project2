@@ -15,7 +15,7 @@
     <input type="text" id="day" placeholder="Enter a day of the week">
     <br>
     <input type="checkbox" name="onlyUpcoming" value="upcoming" checked> upcoming Movies only<br>
-   <button id="btnSave">Save</button>
+   <button id="btnSave">Search</button>
    <hr>
 
 
@@ -24,11 +24,13 @@
 
     <script>
 
-        //  global variables to be used around files
-        window.park_name = "";
-        window.movie_name ="";
-        window.day_of_week = "";
-        window.up_coming ="";
+        // everytime we go back to this tab, the thing resets
+        park_name = "";
+        movie_name ="";
+        day_of_week = "";
+        up_coming ="";
+
+        $(document).ready(function() {
 
         // when we click the save button do these type of things
         // save the information from the box
@@ -37,12 +39,15 @@
         movie_name = $("#movie").val(); // grab the movie name
         day_of_week = $("#day").val(); // grab day
         up_coming = $("input[name='onlyUpcoming']:checked").val();
+        clickedd = true;
+
+        // right here now show the table screen
 
         // testing if it works
         // $("body").append(park_name  + movie_name + day_of_week + "<br>");
       });
 
-
+}); // ready document
     </script>
 
 

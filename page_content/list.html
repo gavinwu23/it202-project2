@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>repl.it</title>
+</head>
+
+<body>
+
+   <h1> Movies Found: </h1>
+   <br>
+
+   <div class ="eMSG">
+	   <p>No data found. Please go to search tab and enter some info.</p>
+   </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"></script>
+
+    <script>
+        // end point of the json file
+
+		// function to check if something is empty
+		function is_empty_string (input) {
+			return (input.length == 0 || input == null);
+		}
+
+        var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+
+        $(document).ready(function() {
+
+			// hide the error message
+			$(".eMSG").hide();
+
+			// if all 3 of the input is empty then display msg
+			if (is_empty_string(park_name) && is_empty_string(movie_name) && is_empty_string(day_of_week)){
+				$(".eMSG").show(); // show the error message
+			}
+
+			// otherwise do the query and display the table thing
+
+			// hold all the total query to use to the get method ajax
+            var query = endpoint + "?";
+
+			//if we have a parkname entered concat it
+			if (is_empty_string(movie_name) === false) {
+				query = query + "Title=";
+				query = query + movie_name;
+			}
+
+
+
+			// call get..right now its going blasting thr getting undefined
+			if (clickedd === true) {
+			$.get(query,
+			function(response) {
+				$.each(response,function(i,v) {
+					$("body").append(v.Title + "<br>");
+				});
+			});
+
+		}
+
+
+
+
+
+
+
+
+
+});
+    </script>
+
+
+  </body>
+</html>
