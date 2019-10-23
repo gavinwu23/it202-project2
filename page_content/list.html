@@ -48,15 +48,38 @@
 			// hold all the total query to use to the get method ajax
             var query = endpoint + "?";
 
+			var needAmp = 0; // keeps track of there are 2 or more quriers together
+
 			//if we have a moviename entered concat it
 			if (is_empty_string(movie_name) === false) {
+				needAmp = needAmp + 1; // now we know if there is another query we need an ampersand
 				query = query + "Title=";
 				query = query + movie_name;
 			}
 
 			// if we have a park name
+			if (is_empty_string(park_name) === false) {
+
+				// check if we need &
+				if (needAmp > 0) {
+					query = query + "&";
+				}
+				query = query + "Park=";
+				query = query + park_name;
+				needAmp = needAmp + 1;
+			}
 
 			// if we have a specific day
+			if (is_empty_string(day_of_week) === false) {
+
+				// check if we need &
+				if (needAmp > 0) {
+					query = query + "&";
+				}
+				query = query + "Day=";
+				query = query + day_of_week;
+				needAmp = needAmp + 1;
+			}
 
 			// call get. once we click the button
 			if (clickedd === true) {
@@ -77,9 +100,10 @@
 					var movieDate = v.date;
 					var movieRating= v.rating;
 					var captionsl =v. cc;
+					var weekDAY = v.day;
 
 					 p.html(movieTitle + " " + movieRating + "<br>" + parkName1 + " " + movieDate + "<br>" + parkPhone + "<br>" + parkAdd + "<br>"
-				  + "Closed Caption: " + captionsl + "<br>");
+				  + "Closed Caption: " + captionsl + "<br>" + "Day of week: " + v.day + "<br>");
 
 
 
