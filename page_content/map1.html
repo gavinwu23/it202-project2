@@ -25,6 +25,12 @@
 
 
     <script>
+
+    // function to check if something is empty
+    function is_empty_string (input) {
+        return (input.length == 0 || input == null);
+    }
+
     $(".movieThings").remove();
 
       // This example displays a marker at the center of Australia.
@@ -32,9 +38,11 @@
 
       function initMap() {
         var uluru = {lat: -25.363, lng: 131.044};
+        var chicago = {lat: 41.8781, lng: -87.6298};
+
         var map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: uluru
+          zoom: 11,
+          center: chicago
         });
 
 
@@ -60,19 +68,127 @@
             '</div>'+
             '</div>';
 
+            // create info window when you click on it
         var infowindow = new google.maps.InfoWindow({
-          content: contentString
+          content: contentString // content string is the display box when u click on marker
         });
 
         var marker = new google.maps.Marker({
-          position: uluru,
-          map: map,
-          title: 'Uluru (Ayers Rock)'
+          position: uluru, // uluru is a variable containing lat and lng
+          map: map, // the new google map
+          title: 'Uluru (Ayers Rock)' // when u hover thr the marker this pops up
         });
+
+        // add the click listenener to open it
         marker.addListener('click', function() {
           infowindow.open(map, marker);
         });
-      }
+
+        var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
+        var query = endpoint + "?";
+        var needAmp = 0; // keeps track of there are 2 or more quriers together
+
+        //if we have a moviename entered concat it
+        if (is_empty_string(movie_name) === false) {
+            needAmp = needAmp + 1; // now we know if there is another query we need an ampersand
+            query = query + "Title=";
+            query = query + movie_name;
+        }
+
+        // if we have a park name
+        if (is_empty_string(park_name) === false) {
+
+            // check if we need &
+            if (needAmp > 0) {
+                query = query + "&";
+            }
+            query = query + "Park=";
+            query = query + park_name;
+            needAmp = needAmp + 1;
+        }
+
+        // if we have a specific day
+        if (is_empty_string(day_of_week) === false) {
+
+            // check if we need &
+            if (needAmp > 0) {
+                query = query + "&";
+            }
+            query = query + "Day=";
+            query = query + day_of_week;
+            needAmp = needAmp + 1;
+        }
+
+        // call the ajax call
+        $.get(query,
+        function(response) {
+            $.each(response,function(i,v) {
+                // park info, name,phone, address
+                var parkName1 = v.park;
+                var parkPhone = v.park_phone;
+                var parkAdd = v.park_address;
+
+                var movieTitle = v.title;
+                var movieDate = v.date;
+                var movieRating= v.rating;
+                var captionsl =v. cc;
+                var weekDAY = v.day;
+
+                var latti = v.location.latitude;
+                var longgi = v.location.longitude;
+
+                //var placee = v.location.latitude;
+
+
+                // build the content
+                var desc1 = movieTitle + " " + movieRating + "<br>" + parkName1 + " " + movieDate + "<br>" + parkPhone + "<br>" + parkAdd + "<br>"
+             + "Closed Caption: " + captionsl + "<br>" + "Day of week: " + v.day + "<br>";
+
+             // // create new info window
+             var iwindow1 = new google.maps.InfoWindow({
+               content: desc1 // content string is the display box when u click on marker
+             });
+
+             // // create new marker
+             var markerr = new google.maps.Marker ({
+                position:new google.maps.LatLng(latti, longgi),
+                map: map
+             });
+
+             // listener
+             markerr.addListener("click",function() {
+                 iwindow1.open(map,markerr);
+             });
+
+
+         }); // loop
+        });// get
+
+
+
+
+
+        // // my own testing
+        //
+        // var china = {lat: 35.8617, lng: 104.1954};
+        // var wordString = "Yushin Li";
+        // var infowindow1 = new google.maps.InfoWindow({
+        //    content: wordString
+        // });
+        //
+        // var marker1 = new google.maps.Marker ({
+        //     position: china,
+        //     map: map,
+        //     title: "china"
+        // });
+        //
+        // marker1.addListener("click",function () {
+        //     infowindow1.open(map,marker1);
+        // });
+
+    } // end of init map function
+
+
 
 
     </script>
