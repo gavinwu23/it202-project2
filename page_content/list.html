@@ -83,6 +83,7 @@
 
 			// call get. once we click the button
 			if (clickedd === true) {
+				$(".eMSG").hide();
 			$.get(query,
 			function(response) {
 				$.each(response,function(i,v) {
