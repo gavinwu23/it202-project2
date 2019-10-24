@@ -13,7 +13,11 @@
 		.content {
 			display: none;
 			margin: 1em;
+			height: 100%;
+			/* needed to add this to make map show */
 		}
+
+
 	</style>
 
 </head>
@@ -37,7 +41,7 @@
         <a class="nav-link" href="#list">List</a>
       </li>
 	  <li class="nav-item">
-		<a class="nav-link" href="#map">Map</a>
+		<a class="nav-link" href="#map1">Map</a>
 	  </li>
       <li class="nav-item">
         <a class="nav-link" href="#about">About</a>
@@ -56,7 +60,7 @@
   <div class="content" id="list">
 
   </div>
-  <div class="content" id="map">
+  <div class="content" id="map1">
 
   </div>
   <div class="content" id="about">
@@ -74,7 +78,6 @@
 
 		// delete all pargraph elements from other things
 		$(".movieThings").remove();
-
 
 		// create global variable for testing
 		// window.globalVar = "hello";

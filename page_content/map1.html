@@ -20,8 +20,12 @@
   </head>
   <body>
 
-    <div id="map" style="height:100%;"></div>
+
+    <div class = "theMAP" id="map"  ></div>
+
+
     <script>
+    $(".movieThings").remove();
 
       // This example displays a marker at the center of Australia.
       // When the user clicks the marker, an info window opens.
@@ -69,6 +73,7 @@
           infowindow.open(map, marker);
         });
       }
+
 
     </script>
     <script async defer
