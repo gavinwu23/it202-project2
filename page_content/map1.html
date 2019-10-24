@@ -37,51 +37,11 @@
       // When the user clicks the marker, an info window opens.
 
       function initMap() {
-        var uluru = {lat: -25.363, lng: 131.044};
         var chicago = {lat: 41.8781, lng: -87.6298};
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
           center: chicago
-        });
-
-
-
-        var contentString = '<div id="content">'+
-            '<div id="siteNotice">'+
-            '</div>'+
-            '<h1 id="firstHeading" class="firstHeading">Uluru</h1>'+
-            '<div id="bodyContent">'+
-            '<p><b>Uluru</b>, also referred to as <b>Ayers Rock</b>, is a large ' +
-            'sandstone rock formation in the southern part of the '+
-            'Northern Territory, central Australia. It lies 335&#160;km (208&#160;mi) '+
-            'south west of the nearest large town, Alice Springs; 450&#160;km '+
-            '(280&#160;mi) by road. Kata Tjuta and Uluru are the two major '+
-            'features of the Uluru - Kata Tjuta National Park. Uluru is '+
-            'sacred to the Pitjantjatjara and Yankunytjatjara, the '+
-            'Aboriginal people of the area. It has many springs, waterholes, '+
-            'rock caves and ancient paintings. Uluru is listed as a World '+
-            'Heritage Site.</p>'+
-            '<p>Attribution: Uluru, <a href="https://en.wikipedia.org/w/index.php?title=Uluru&oldid=297882194">'+
-            'https://en.wikipedia.org/w/index.php?title=Uluru</a> '+
-            '(last visited June 22, 2009).</p>'+
-            '</div>'+
-            '</div>';
-
-            // create info window when you click on it
-        var infowindow = new google.maps.InfoWindow({
-          content: contentString // content string is the display box when u click on marker
-        });
-
-        var marker = new google.maps.Marker({
-          position: uluru, // uluru is a variable containing lat and lng
-          map: map, // the new google map
-          title: 'Uluru (Ayers Rock)' // when u hover thr the marker this pops up
-        });
-
-        // add the click listenener to open it
-        marker.addListener('click', function() {
-          infowindow.open(map, marker);
         });
 
         var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
@@ -120,6 +80,7 @@
         }
 
         // call the ajax call
+        if (clickedd === true) {
         $.get(query,
         function(response) {
             $.each(response,function(i,v) {
@@ -131,14 +92,11 @@
                 var movieTitle = v.title;
                 var movieDate = v.date;
                 var movieRating= v.rating;
-                var captionsl =v. cc;
+                var captionsl =v.cc;
                 var weekDAY = v.day;
 
                 var latti = v.location.latitude;
                 var longgi = v.location.longitude;
-
-                //var placee = v.location.latitude;
-
 
                 // build the content
                 var desc1 = movieTitle + " " + movieRating + "<br>" + parkName1 + " " + movieDate + "<br>" + parkPhone + "<br>" + parkAdd + "<br>"
@@ -160,36 +118,11 @@
                  iwindow1.open(map,markerr);
              });
 
-
          }); // loop
         });// get
-
-
-
-
-
-        // // my own testing
-        //
-        // var china = {lat: 35.8617, lng: 104.1954};
-        // var wordString = "Yushin Li";
-        // var infowindow1 = new google.maps.InfoWindow({
-        //    content: wordString
-        // });
-        //
-        // var marker1 = new google.maps.Marker ({
-        //     position: china,
-        //     map: map,
-        //     title: "china"
-        // });
-        //
-        // marker1.addListener("click",function () {
-        //     infowindow1.open(map,marker1);
-        // });
+    } // clicked true false
 
     } // end of init map function
-
-
-
 
     </script>
     <script async defer
