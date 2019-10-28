@@ -4,7 +4,7 @@ self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('airhorner').then(function(cache) {
      return cache.addAll([
-       '/',
+       '/it202-project2',
        '/it202-project2/index.html',
        "/it202-project2/page_content/about.html",
        "/it202-project2/page_content/home.html",
