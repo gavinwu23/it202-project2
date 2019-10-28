@@ -37,7 +37,7 @@
       // When the user clicks the marker, an info window opens.
 
       function initMap() {
-        var chicago = {lat: 41.8781, lng: -87.6298};
+        var chicago = {lat: 41.8781, lng: -87.6298}; // we want to map to load in on the center of chicago
 
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 11,
@@ -46,7 +46,8 @@
 
         var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
         var query = endpoint + "?";
-        var needAmp = 0; // keeps track of there are 2 or more quriers together
+        var needAmp = 0; // keeps track of there are 2 or more quriers together, if this variable greater than 0 then we know
+                        // we need a ampersand for the query
 
         //if we have a moviename entered concat it
         if (is_empty_string(movie_name) === false) {
