@@ -5,12 +5,12 @@ self.addEventListener('install', function(e) {
    caches.open('airhorner').then(function(cache) {
      return cache.addAll([
        '/',
-       '/index.html',
-       "/page_content/about.html",
-       "/page_content/home.html",
-       "/page_content/list.html",
-       "/page_content/map1.html",
-       "/page_content/search.html"
+       '/it202-project2/index.html',
+       "/it202-project2/page_content/about.html",
+       "/it202-project2/page_content/home.html",
+       "/it202-project2/page_content/list.html",
+       "/it202-project2/page_content/map1.html",
+       "/it202-project2/page_content/search.html"
      ]);
    })
  );
