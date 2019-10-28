@@ -1,3 +1,5 @@
+importScripts('/it202-project2/cache-polyfill.js');
+
 self.addEventListener('install', function(e) {
  e.waitUntil(
    caches.open('airhorner').then(function(cache) {
