@@ -2,7 +2,7 @@ importScripts('/it202-project2/cache-polyfill.js');
 
 self.addEventListener('install', function(e) {
  e.waitUntil(
-   caches.open('airhorner').then(function(cache) {
+   caches.open('mmovie').then(function(cache) {
      return cache.addAll([
        '/it202-project2',
        '/it202-project2/index.html',
