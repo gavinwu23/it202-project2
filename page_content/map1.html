@@ -17,6 +17,7 @@
         padding: 0;
       }
     </style>
+    <link rel="manifest" href="/manifest.json">
   </head>
   <body>
 
@@ -81,7 +82,7 @@
         }
 
         // call the ajax call
-        // right now if we click upcoming movies, there is none in the api so for now do this way then do it later 
+        // right now if we click upcoming movies, there is none in the api so for now do this way then do it later
         if (clickedd === true && checkBOX === false) {
         $.get(query,
         function(response) {
