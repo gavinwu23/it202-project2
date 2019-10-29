@@ -14,7 +14,7 @@
     <br>
     <input type="text" id="day" placeholder="Enter a day of the week">
     <br>
-    <input type="checkbox" name="onlyUpcoming" value="upcoming" checked> upcoming Movies only<br>
+    <input type="checkbox" id="boxbox" name="onlyUpcoming" value="upcoming" checked> upcoming Movies only<br>
    <button id="btnSave">Search</button>
    <hr>
 
@@ -33,8 +33,8 @@
 
         $(document).ready(function() {
 
-			// delete all pargraph elements
-			$(".movieThings").remove();
+		// delete all pargraph elements
+		$(".movieThings").remove();
 
         // when we click the save button do these type of things
         // save the information from the box
@@ -45,7 +45,9 @@
         up_coming = $("input[name='onlyUpcoming']:checked").val();
         clickedd = true;
 
-        // check if upcoming works
+        // check if upcoming works..works
+		// check if checkbox has been clicked
+		checkBOX = $('#boxbox').is(':checked');
 
         // right here now show the table screen
 		// load the list html here
@@ -56,7 +58,7 @@
 
         // testing if it works
         // $("body").append(park_name  + movie_name + day_of_week + "<br>");
-      });
+	}); // click button
 
 }); // ready document
     </script>

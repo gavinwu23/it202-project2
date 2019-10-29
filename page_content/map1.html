@@ -81,7 +81,8 @@
         }
 
         // call the ajax call
-        if (clickedd === true) {
+        // right now if we click upcoming movies, there is none in the api so for now do this way then do it later 
+        if (clickedd === true && checkBOX === false) {
         $.get(query,
         function(response) {
             $.each(response,function(i,v) {
