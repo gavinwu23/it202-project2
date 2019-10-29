@@ -21,13 +21,21 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dexie/2.0.4/dexie.min.js"></script>
 
     <script>
-        // end point of the json file
+
+		// variable to hold the count of records found
+		var count = 0;
 
 		// function to check if something is empty
 		function is_empty_string (input) {
 			return (input.length == 0 || input == null);
 		}
 
+		// make it show to the top of the body
+		function displayTotalRec ( ){
+			$("h1").append( count);
+		}
+
+		// data api
         var endpoint = "https://data.cityofchicago.org/resource/7piw-z6r6.json";
 
         $(document).ready(function() {
@@ -83,10 +91,14 @@
 
 			// call get. once we click the button
 			if (clickedd === true && checkBOX === false) {
-				$(".eMSG").hide();
+				$(".eMSG").hide(); // hide the error message
 			$.get(query,
 			function(response) {
 				$.each(response,function(i,v) {
+
+					// incrementer to keeep track of movies found
+					count = count + 1;
+
 					// add pargraph elements to the thing
 					var p = $("<p>");
 					p.addClass("movieThings");
@@ -109,7 +121,12 @@
 					// $("body").append(v.title + "<br>");
 					$("body").append(p);
 				});
+				displayTotalRec(); // show how many records were found
 			});
+
+		} // if clicked
+		else {
+			displayTotalRec();
 		}
 
 
