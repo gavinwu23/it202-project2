@@ -1,7 +1,19 @@
 {
   "short_name": "Movie Search",
   "name": "Movie Search",
-
+  "icons": [
+    {
+      "src": "/it202-project2/icon1.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/it202-project2/icon2.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/it202-project2/index.html",
   "background_color": "#3367D6",
   "display": "standalone",
   "theme_color": "#3367D6"
